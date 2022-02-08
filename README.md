@@ -4,7 +4,7 @@ A skeleton project to start a new Yew web single page app (SPA)<br>
 ## Why
 Everytime I create new project with Yew web framework, it always ended up at this state no matter what
 
-## Build
+## Requirement
 To build wasm file, we will need `rust`, `wasm-pack`, `wasm-bindgen-cli`, `wasm-opt`
 
 Install Rust
@@ -25,6 +25,12 @@ cargo install -f wasm-bindgen-cli
 Install wasm-opt, it's lies under `binaryen` package
 ```sh
 sudo pacman -S binaryen
+```
+
+## Build
+Just simple run the `build_wasm.sh` file
+```sh
+sh build_wasm.sh
 ```
 
 ## Run
