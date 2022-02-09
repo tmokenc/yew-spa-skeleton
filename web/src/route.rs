@@ -1,7 +1,11 @@
 mod index;
+mod not_found;
 
 use yew::prelude::*;
 use yew_router::prelude::*;
+
+pub type Link = yew_router::components::Link<Route>;
+pub type Redirect = yew_router::components::Redirect<Route>;
 
 #[derive(Routable, PartialEq, Clone, Debug)]
 pub enum Route {
@@ -19,26 +23,48 @@ pub enum Route {
     NotFound,
 }
 
+#[function_component(About)]
+fn about() -> Html {
+    html! {
+        <section class="section is-large">
+            <h1 class="title">
+                { "Here create a goooooood page about yourself/company" }
+            </h1>
+        </section>
+    }
+}
+
 impl Route {
+    fn name(&self) -> &'static str {
+        match self {
+            Self::Index => "Yew App",
+            Self::NotFound => "404 NotFound",
+            Self::About => "About Me",
+            Self::Echo { .. } => "Echo",
+        }
+    }
+    
     pub fn render(&self) -> Html {
+        crate::utils::change_title(self.name());
+        
         match self {
             Self::Echo { s } => html! {
-                <>
-                    <h1>{ "Echoing" }</h1>
-                    <h2>{ s }</h2>
-                </>
+                <section class="section is-large">
+                    <h1 class="title">{ "Echoing" }</h1>
+                    <h2 class="subtitle">{ s }</h2>
+                </section>
             },
 
             Self::Index => html! {
-                <h1>{ "Hi, I'm Tomoka" }</h1>
+                <index::Index/>
             },
 
             Self::About => html! {
-                <h1>{ "By tmokenc" }</h1>
+                <About/>
             },
 
             Self::NotFound => html! {
-                <h1>{ "404 Successfully NOT FOUND" }</h1>
+                <not_found::NotFound/>
             },
         }
     }

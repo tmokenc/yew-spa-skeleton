@@ -41,6 +41,9 @@ cargo run --release
 
 We can change the `IP` and `port` in the file `config.toml`
 
+## CSS
+I use Bulma because I got familiar with it
+
 ## Server
 The server can be anything, I just use `actix-web` because I got familiar with it<br>
 It needs to have 3 basic `GET` routes to serve the web

@@ -9,7 +9,18 @@
     <title>Yew SPA</title>
 </head>
 <body>
-    <div id="loading"></div>
+    <!-- Do some loading animation while waiting for wasm to load -->
+    <div id="loading" class="hero is-fullheight">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <button 
+                    class="button is-loading" 
+                    style="font-size: 6em; border: none"
+                >Loading</button>
+            </div>
+        </div>
+    </div>
+    
     <script type="module">
         import wasmInit from "/wasm/app.js";
 
